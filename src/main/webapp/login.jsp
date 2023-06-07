@@ -58,11 +58,11 @@ function limitText(limitField, limitNum) {
 <div class="col col-5">
 <form action="Login" method="post" class="mt-3 mb-5">
   <div class="mb-3">
-    <label for="id" class="form-label"><i class="bi bi-phone"></i> Login ID</label>
+    <label for="id" class="form-label"><i class="fa-solid fa-id-card"></i> Login ID</label>
     <input type="text" class="form-control" id="mobile" aria-describedby="emailHelp" name="id" required title="Enter you mobile number here" value="${sessionScope.idFailedAttempt}" maxlength="10" onKeyDown="limitText(this,10);" >
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label" ><i class="bi bi-shield-lock"></i> Password</label>
+    <label for="exampleInputPassword1" class="form-label" ><i class="fa-solid fa-lock"></i> Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" name="password" required title="Enter you password here">
   </div>
   <div class="mb-3 form-check">
@@ -77,8 +77,10 @@ function limitText(limitField, limitNum) {
     
     <button type="button" class="btn btn-sm btn-danger" title="click to hide password" id="hide_password"><i class="bi bi-eye-slash"></i> </button><br>
    </div>
-  <div class="d-grid gap-2 col-6 mx-auto my-2">
-  <button type="submit" class="btn btn-success mt-3" title="click here to login"><i class="bi bi-box-arrow-in-right"></i>&nbsp; Login</button>
+   <div class="row justify-content-center">
+  <div class="d-grid gap-2 col-6 mx-auto text-center">
+  	<button type="submit" class="btn btn-success col-8" title="click here to login"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+</div>
 </div>
 </form>
 </div>

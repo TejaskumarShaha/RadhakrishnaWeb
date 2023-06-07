@@ -6,6 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title></title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
  
     <!-- Bootstrap Font Icon CSS -->
@@ -24,7 +26,7 @@
       <ul class="navbar-nav">
   		 <core:if test="${sessionScope.is_admin}">
   		 <li class="nav-item">
-          <a class="nav-link btn-sm" href="adminPanel.jsp"><i class="bi bi-toggles"></i> Admin Panel</a>
+          <a class="nav-link btn-sm" href="adminPanel.jsp"><i class="fa-solid fa-user-gear"></i> Admin Panel</a>
         </li>
         
   		

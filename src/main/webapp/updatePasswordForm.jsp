@@ -71,6 +71,7 @@
 </div>
 	
 </core:if>
+<core:import url="footer.jsp"></core:import>
 </div>
 	<script>
 		var showPassword 	= document.getElementById("show_password");

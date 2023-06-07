@@ -43,7 +43,7 @@ border-left:5px solid #008080;
 <core:forEach var="data" items="${stock.rows}" varStatus="i">
 <div class="card border mt-2 "  style="background-color:#DCF8E7;cursor:pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample-${i.count}" aria-expanded="false" aria-controls="collapseExample" >
 	<div class="card-header border-left text-center ">
-		      <b><i class="bi bi-chevron-double-left"></i> ${data.stock_room_name} <i class="bi bi-chevron-double-right"></i></b>
+		     ${i.count} - <b><i class="bi bi-chevron-double-left"></i> ${data.stock_room_name} <i class="bi bi-chevron-double-right"></i></b>
  	</div>
     <div class="collapse  "  id="collapseExample-${i.count}">
   <div class="card card-body ">
@@ -92,7 +92,9 @@ border-left:5px solid #008080;
 </core:if>		
 			
 		</div>
+		
 	</div>
+	<core:import url="footer.jsp"></core:import>
 </div>
 </core:if>
 </body>
