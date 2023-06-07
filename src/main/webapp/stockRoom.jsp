@@ -8,6 +8,12 @@
 <meta charset="ISO-8859-1">
 <title>All Stock</title>
 </head>
+<style>
+.border-left{
+border-left:5px solid #008080;
+
+}
+</style>
 <body class="bg-light">
 <core:import url="navbar.jsp"></core:import>
 <!-- check for login -->
@@ -35,12 +41,12 @@
 			<!-- collapse -->	
 <core:if test="${stock.rowCount gt 0}">	
 <core:forEach var="data" items="${stock.rows}" varStatus="i">
-<div class="card border mt-2 border-success"  style="background-color:#DCF8E7;cursor:pointer; " data-bs-toggle="collapse" data-bs-target="#collapseExample-${i.count}" aria-expanded="false" aria-controls="collapseExample" >
-	<div class="card-header text-center ">
-		    View all products for Stock Room  <b><i class="bi bi-chevron-double-left"></i> ${data.stock_room_name} <i class="bi bi-chevron-double-right"></i></b>
+<div class="card border mt-2 "  style="background-color:#DCF8E7;cursor:pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample-${i.count}" aria-expanded="false" aria-controls="collapseExample" >
+	<div class="card-header border-left text-center ">
+		      <b><i class="bi bi-chevron-double-left"></i> ${data.stock_room_name} <i class="bi bi-chevron-double-right"></i></b>
  	</div>
-    <div class="collapse" id="collapseExample-${i.count}">
-  <div class="card card-body">
+    <div class="collapse  "  id="collapseExample-${i.count}">
+  <div class="card card-body ">
 	<sql:query dataSource="${con}" var="stockData">
 		SELECT product_name,product_quantity_in_stock_room FROM stock S
 		INNER JOIN products P ON S.product_id= P.id
@@ -48,7 +54,7 @@
 		WHERE SR.id =${data.id};
 	</sql:query> 
 	<core:if test="${stockData.rowCount>0}">
-	<table class="table table-bordered border-success table-success table-hover table-striped text-center" border="1">
+	<table class="table table-bordered  border-success table-success table-hover table-striped text-center" border="2">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -71,7 +77,7 @@
 </table>
 	</core:if>
 	<core:if test="${stockData.rowCount eq 0}">
-		<h3 class="text-center text-danger">Oops! Stock Room Is Empty</h3>
+		<h3 class="text-center text-danger">Oh dear! Stock Room Is Empty</h3>
 	</core:if>   
 </div>
 </div>

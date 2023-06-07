@@ -71,7 +71,7 @@ ${sessionScope.addProdcutToTheStockRoom }
 
 <label for="productName" class="form-label mt-3"><i class="bi bi-cart"></i> Product Name</label>
     
-  <select class="form-select" aria-label="Default select example" name="id" id="productName" required>
+  <select class="form-select" aria-label="Default select example" name="id" id="productName"  required>
   <option value="">Choose Product Name</option>
   <core:forEach var="data" items="${products_in_stock.rows}">
   	<option value="${data.id}">${data.product_name}</option>

@@ -27,14 +27,8 @@
           <a class="nav-link btn-sm" href="adminPanel.jsp"><i class="bi bi-toggles"></i> Admin Panel</a>
         </li>
         
-  		 <li class="nav-item">
-          <a class="nav-link" href="addProductInStock.jsp"><i class="bi bi-cart-plus"></i> Add Product</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="allBillings.jsp"><i class="bi bi-shop"></i> Add Stock Room</a>
-        </li>
-        
+  		
+       
         <li class="nav-item">
           <a class="nav-link" href="addOperatorForm.jsp"><i class="bi bi-person-plus"></i> Add Operator</a>
         </li>
@@ -47,6 +41,15 @@
         </li>-->
        </core:if>
         <core:if test="${sessionScope.loggedIn}">
+         <li class="nav-item">
+          <a class="nav-link" href="addProductInStock.jsp"><i class="bi bi-cart-plus"></i> Add Product</a>
+        </li>
+        
+         
+        <li class="nav-item">
+          <a class="nav-link" href="allBillings.jsp"><i class="bi bi-shop"></i> Add Stock Room</a>
+        </li>
+        
         <li class="nav-item ">
           <a class="nav-link" href="addBillings.jsp"><i class="bi bi-journal-plus"></i> Add Billings</a>
         </li>
