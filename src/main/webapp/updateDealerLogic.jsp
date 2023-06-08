@@ -15,26 +15,21 @@
 	driver="com.mysql.cj.jdbc.Driver" 
 	url="jdbc:mysql://localhost:3306/radhakrishna" 
 	var="con"/>
-		<core:catch var="exception">
-		<sql:update dataSource="${con}" var="addDealerStatus">
-			insert into dealers(shop_name,mobile,gstno,address) values(?,?,?,?);
+		
+		<sql:update dataSource="${con}" var="updateDealerStatus">
+			update dealers set shop_name=?, mobile=?, gstno=?,address=? where id=?;
 			<sql:param value="${param.dealerShop}"></sql:param>
 			<sql:param value="${param.dealerMobile}"></sql:param>
 			<sql:param value="${param.gstnumber}"></sql:param>
 			<sql:param value="${param.dealerAddress}"></sql:param>
+			<sql:param value="${param.dealerID}"></sql:param>
 		</sql:update>
-	</core:catch>
+	
+	
 	<core:if test="${exception eq null}">
 		<core:set var="exception" value="noexception" scope="session"></core:set>
-		<core:set var="shop_name" value="${param.dealerShop}" scope="session"></core:set>
-		<core:redirect url="addDealers.jsp"></core:redirect>
+		<core:set var="shop_id" value="${param.dealerID}" scope="session"></core:set>
+		<core:redirect url="allDealers.jsp"></core:redirect>
 	</core:if>
-	
-	<core:if test="${exception ne null}">
-		<core:set var="exception" value="exception" scope="session"></core:set>
-		<core:set var="shop_name" value="${param.dealerShop}" scope="session"></core:set>
-		<core:redirect url="addDealers.jsp"></core:redirect>
-	</core:if>
-	
 </body>
 </html>

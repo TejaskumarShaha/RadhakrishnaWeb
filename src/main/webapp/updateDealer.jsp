@@ -1,73 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Dealer</title>
+<title>Update Dealer</title>
 </head>
+<body>
 <body class="bg-light">
 <core:import url="navbar.jsp"></core:import>
 <!-- check for logged in -->
 <core:if test="${sessionScope.loggedIn}">
 <!-- checks for admin -->
 <core:if test="${sessionScope.is_admin}">
-	<div class="container mt-4">
-	<!-- message -->
-	<core:if test="${sessionScope.exception eq 'noexception'}">
-		<div class="row justify-content-center ">
-			<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-			  <strong>Success! </strong> Dealer Shop <strong>${sessionScope.shop_name}</strong>  is added successfully.
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		</div>
-	</core:if>
-	
-	<!-- message -->
-	<core:if test="${sessionScope.exception eq 'exception'}">
-		<div class="row justify-content-center ">
-			<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-			  <strong>Oh dear! </strong> Dealer Shop <strong>${sessionScope.shop_name}</strong>  is already added.
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		</div>
-	</core:if>
+	<div class="container mt-4">	
 		<!-- heading -->
 		<div class="row justify-content-center">
 			<div class="col col-5">
-			<h3>Add New Dealer</h3>
+			<h3>Update Dealer</h3>
 			</div>
 		</div>
 		<!-- form container -->
 		<div class="row justify-content-center">
 			<div class="col col-5 border px-4 py-3 rounded bg-white">
 			<!--  form -->
-				<form class="mb-5" action="addDealerLogic.jsp" method="post">
+				<form class="mb-5" action="updateDealerLogic.jsp" method="post">
 				  <div class="mb-3">
+				     <input type="hidden" class="form-control" id="dealer_name" name="dealerID" required placeholder="type dealer name here..." value="${param.dealerID}">
+				    </div>		
+				    
+				    <div class="mb-3">
 				    <label for="dealer_name" class="form-label"><i class="bi bi-shop"></i> Dealer Shop Name</label>
-				    <input type="text" class="form-control" id="dealer_name" name="dealerShop" required placeholder="type dealer name here...">
-				    </div>				  
+				    <input type="text" class="form-control" id="dealer_name" name="dealerShop" required placeholder="type dealer name here..." value="${param.dealerShopName}">
+				    </div>		  
 				  
 				  <div class="mb-3">
 				    <label for="dealer_mobile" class="form-label"><i class="bi bi-phone"></i> Mobile</label>
-				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" maxlength="10" min="10" class="form-control " id="dealer_mobile" name="dealerMobile" placeholder="type dealer mobile here..." required>
+				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" maxlength="10" min="10" class="form-control " value="${param.dealerMobile}" id="dealer_mobile" name="dealerMobile" placeholder="type dealer mobile here..." required>
 				  </div>
 				 
 				 <div class="mb-3">
 				    <label for="gst_number" class="form-label"><i class="fa-solid fa-receipt"></i> GST Number</label>
-				    <input type="text" class="form-control" id="gst_number" name="gstnumber" required placeholder="type gst number here...">
+				    <input type="text" class="form-control" id="gst_number" name="gstnumber" value="${param.dealerGSTno}" required placeholder="type gst number here...">
 				    </div>
 					
 					<div class="mb-3">
 				    <label for="dealer_address" class="form-label"><i class="fa-solid fa-location-dot"></i> Address</label>
-				    <textarea  class="form-control" id="dealer_address" name="dealerAddress" required placeholder="type address here..."></textarea>
+				    <textarea  class="form-control" id="dealer_address" name="dealerAddress"  required placeholder="type address here...">${param.dealerAddress}</textarea>
 				    </div>
 				    				    
 				  <div class="row justify-content-center">
 					  <div class="col col-4">
-					  	<button type="submit" class="btn btn-success btn-sm"><i class="bi bi-shop"></i> Add Dealer Shop</button>
+					  	<button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-pencil"></i> Update Dealer</button>
 					  </div>
 				  </div>
 			</form >
@@ -93,7 +78,6 @@
 </core:if>
  
 	<!-- removing operator add status var from session -->
-	<core:remove var="exception"></core:remove>
-	<core:remove var="shop_name"></core:remove>
+	
 </body>
 </html>

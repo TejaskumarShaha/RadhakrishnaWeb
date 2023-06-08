@@ -36,7 +36,7 @@ function limitText(limitField, limitNum) {
 			
 			<core:if test="${sessionScope.RightTimeToLogInToOperator == false}">
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				  Oops! you can't login right now you can only login between <strong>9Am to 7pm</strong>
+				  Oh dear operator! you can't login right now you can only login between <strong>8Am to 9pm</strong>
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			</core:if>
