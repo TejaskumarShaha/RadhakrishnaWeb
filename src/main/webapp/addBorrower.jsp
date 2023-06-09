@@ -16,9 +16,9 @@ function limitText(limitField, limitNum) {
 </script>
 </head>
 <body class="bg-light">
-<core:import url="navbar.jsp"></core:import>
 <!-- container -->
 <core:if test="${sessionScope.loggedIn}">
+<core:import url="navbar.jsp"></core:import>
 <div class="container mt-5">
 ${ notexception}
 <core:if test="${param.notException=='notexception'}">
@@ -75,6 +75,10 @@ ${ notexception}
 <!--  container end -->
 
 </div>
+</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
 </core:if>
 </body>
 </html>

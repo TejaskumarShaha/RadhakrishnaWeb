@@ -22,14 +22,14 @@ function limitText(limitField, limitNum) {
 </style>
 <body class="bg-light">
 <core:import url="navbar.jsp"></core:import>
-<core:if test="${sessionScope.loggedIn != 'true'}">
+
 <!-- message -->
 <div class="container mt-5">
 	<div class="row justify-content-center ">
 		<div class="col col-10 text-center">
 			<core:if test="${sessionScope.message!=null}">
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				  ${sessionScope.message}
+				  <strong>${sessionScope.message}</strong>
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			</core:if>
@@ -59,7 +59,7 @@ function limitText(limitField, limitNum) {
 <form action="Login" method="post" class="mt-3 mb-5">
   <div class="mb-3">
     <label for="id" class="form-label"><i class="fa-solid fa-id-card"></i> Login ID</label>
-    <input type="text" class="form-control" id="mobile" aria-describedby="emailHelp" name="id" required title="Enter you mobile number here" value="${sessionScope.idFailedAttempt}" maxlength="10" onKeyDown="limitText(this,10);" >
+    <input type="text" class="form-control" id="id"  oninput="this.value= this.value.replace(/[^\d.]/g, '')" name="id" required title="Enter you mobile number here" value="${sessionScope.idFailedAttempt}" maxlength="10" onKeyDown="limitText(this,10);" >
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label" ><i class="fa-solid fa-lock"></i> Password</label>
@@ -94,19 +94,12 @@ function limitText(limitField, limitNum) {
 <core:import url="footer.jsp"></core:import>
 
 </div>
-</core:if>
-<core:if test="${sessionScope.loggedIn}">
-<div class="row justify-content-center">
-		<div class="col col-6">
-			<h4>You are already logged in</h4>
-		</div>
-	</div>
+
 	
-	</core:if>
-	<core:remove var="message"></core:remove>
-	<core:remove var="idFailedAttempt"></core:remove>
-	<core:remove var="RightTimeToLogInToOperator"></core:remove>
-	<script>
+<core:remove var="message"></core:remove>
+<core:remove var="idFailedAttempt"></core:remove>
+<core:remove var="RightTimeToLogInToOperator"></core:remove>
+<script>
 		var showPassword 	= document.getElementById("show_password");
 		var hidePassword 	= document.getElementById("hide_password");
 		var password	 	= document.getElementById("exampleInputPassword1");

@@ -129,9 +129,14 @@
 		</div>
 	</div>
 </div>
-</core:if>
+
 <core:remove var="exception"></core:remove>
 <core:remove var="addedToSalesStatus"></core:remove>
 <core:remove var="product_name_in_stock"></core:remove>
+</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
 </body>
 </html>

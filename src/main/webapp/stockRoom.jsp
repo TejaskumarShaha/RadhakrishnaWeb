@@ -17,6 +17,7 @@ border-left:5px solid #008080;
 <body class="bg-light">
 <core:import url="navbar.jsp"></core:import>
 <!-- check for login -->
+<core:if test="${sessionScope.loggedIn}">
 <core:if test="${sessionScope.is_admin}">
 <sql:setDataSource 
 	user="root" 
@@ -97,5 +98,10 @@ border-left:5px solid #008080;
 	<core:import url="footer.jsp"></core:import>
 </div>
 </core:if>
+</core:if>
+<core:if test="${not sessionScope.loggedIn}">
+<core:redirect url="login.jsp"></core:redirect>
+</core:if>
+
 </body>
 </html>

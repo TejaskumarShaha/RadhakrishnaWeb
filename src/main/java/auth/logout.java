@@ -18,7 +18,7 @@ public class logout extends HttpServlet {
 		s.setAttribute("is_admin", false);
 		s.setAttribute("loggedIn", false);
 		s.setAttribute("message", null);
-		s.setAttribute("mobilenumberforFailAttempt", null);
+		s.setAttribute("idFailedAttempt", null);
 		s.invalidate();
 		response.sendRedirect("login.jsp");
 	}

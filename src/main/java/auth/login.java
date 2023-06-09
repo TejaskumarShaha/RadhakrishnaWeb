@@ -55,7 +55,7 @@ public class login extends HttpServlet {
 					}
 					else {
 						HttpSession s = request.getSession();
-						s.setAttribute("message", "Oops! please check your credentials");
+						s.setAttribute("message", "Oh dear! please check your credentials");
 						s.setAttribute("idFailedAttempt", id);
 						response.sendRedirect("login.jsp");
 					}
@@ -78,7 +78,7 @@ public class login extends HttpServlet {
 							response.sendRedirect("adminPanel.jsp");
 						}else {
 							HttpSession s = request.getSession();
-							s.setAttribute("message", "Oops! please check your credentials");
+							s.setAttribute("message", "Oh dear! please check your credentials");
 							s.setAttribute("idFailedAttempt", id);
 							response.sendRedirect("login.jsp");
 							}

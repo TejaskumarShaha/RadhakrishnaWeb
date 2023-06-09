@@ -9,9 +9,10 @@
 <title>Add Dealer</title>
 </head>
 <body class="bg-light">
-<core:import url="navbar.jsp"></core:import>
+
 <!-- check for logged in -->
 <core:if test="${sessionScope.loggedIn}">
+<core:import url="navbar.jsp"></core:import>
 <!-- checks for admin -->
 <core:if test="${sessionScope.is_admin}">
 	<div class="container mt-4">
@@ -90,10 +91,14 @@
 </div>
 </core:if>
 <!-- end checks for logged in -->
-</core:if>
- 
-	<!-- removing operator add status var from session -->
+<!-- removing operator add status var from session -->
 	<core:remove var="exception"></core:remove>
 	<core:remove var="shop_name"></core:remove>
+</core:if>
+ <!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
+	
 </body>
 </html>

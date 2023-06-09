@@ -25,7 +25,10 @@
 	url="jdbc:mysql://localhost:3306/radhakrishna" 
 	var="con"/>
 	<sql:query dataSource="${con}" var="rs">
-		select * from billings order by expiry_date asc;
+		SELECT products.product_name,billings.product_quantity,manufacturing_date,expiry_date,product_add_date,product_price,stockroom.stock_room_name
+		FROM billings
+		LEFT JOIN stockroom ON billings.store_name = stockroom.id
+		LEFT JOIN products ON billings.product_id = products.id;
 	</sql:query>	
 <div class="container col-10 mt-3 border px-3 py-3 rounded">
 	<div class="row justify-content-md-center">
@@ -42,13 +45,13 @@
 					      <th scope="col">#</th>
 					      <th scope="col">Product Name</th>
 					      <th scope="col">Product Quantity (kg)</th>
-					      <th scope="col">Manufacture Date</th>
+					      <th scope="col">Product Mfg. Date</th>
 					      <th scope="col">Expiry Date</th>
-					      <th scope="col">Product Add Date</th>
+					      <th scope="col">Billing Add Date</th>
 					      <th scope="col">Gross Price</th>
 					      <th scope="col">Store Name</th>
-					      <th scope="col">Update</th>
-					      <!-- <th scope="col">Delete</th> -->
+					     <!-- <th scope="col">Update</th>
+					     <th scope="col">Delete</th> -->
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -64,9 +67,9 @@
 					      <td><fmt:formatDate type = "date" 
 					         value = "${product.product_add_date}" /></td>
 					      <td>${product.product_price}</td>
-					      <td>${product.store_name}</td>
-					      <td><a href="#" class="btn btn-success btn-sm mx-2" >Update</a></td>
-					     <!-- <td><a href="confirmDeleteProduct.jsp?product_name=${product.id}" class="btn btn-danger btn-sm mx-2" >delete </a></td>-->
+					      <td>${product.stock_room_name}</td>
+					      <!-- <td><a href="#" class="btn btn-success btn-sm mx-2" >Update</a></td>
+					     <td><a href="confirmDeleteProduct.jsp?product_name=${product.id}" class="btn btn-danger btn-sm mx-2" >delete </a></td>-->
 					    </tr>
 					 </core:forEach>
 					  </tbody>
@@ -101,6 +104,10 @@
 </div>
 <script src="./js/adminPanel.js"></script>
 
+</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
 </core:if>
 </body>
 </html>

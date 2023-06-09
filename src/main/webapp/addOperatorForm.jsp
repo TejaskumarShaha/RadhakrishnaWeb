@@ -74,7 +74,7 @@
 				 
 				  <div class="row justify-content-center">
 					  <div class="col col-4">
-					  	<button type="submit" class="btn btn-info btn-sm"><i class="bi bi-person-plus"></i> Add Operator</button>
+					  	<button type="submit" class="btn btn-warning btn-sm"><i class="bi bi-person-plus"></i> Add Operator</button>
 					  </div>
 				  </div>
 			</form >
@@ -96,9 +96,7 @@
 	</div>
 </div>
 </core:if>
-<!-- end checks for logged in -->
-</core:if>
- <script>
+<script>
 		var showPassword 	= document.getElementById("show_password");
 		var hidePassword 	= document.getElementById("hide_password");
 		var password	 	= document.getElementById("password");
@@ -122,5 +120,12 @@
 	<!-- removing operator add status var from session -->
 	<core:remove var="operatorAddStatus"></core:remove>
 	<core:remove var="operator_name"></core:remove>
+<!-- end checks for logged in -->
+</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
+ 
 </body>
 </html>

@@ -13,6 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<core:if test="${sessionScope.loggedIn}">
 <core:import url="navbar.jsp"></core:import>
 <!-- jstl -->
 	<fmt:parseNumber var="p" type="number" value="${param.sales_price}" />
@@ -129,5 +130,10 @@
 		<core:set var="exception" value="ProductnotAvailableInStock" scope="session"></core:set>
 		<core:redirect url="addSales.jsp"></core:redirect>
 	</core:if>
+	</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
 </body>
 </html>

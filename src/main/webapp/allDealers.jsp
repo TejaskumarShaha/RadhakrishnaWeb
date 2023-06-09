@@ -9,6 +9,7 @@
 <title>All Dealers</title>
 </head>
 <body>
+<core:if test="${sessionScope.loggedIn}">
 <sql:setDataSource 
 	user="root" 
 	password="root" 
@@ -37,23 +38,25 @@
 </div>
 <!-- dealers details -->
 <div class="row justify-content-center ">
-<div class="col col-12 border px-4 rounded " >
-<div class="row">
+
 	<div class="col">
 		<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
 					   All Dealers <strong>( ${dealers.rowCount} )</strong>
 		</div>
-	</div>
+	
 </div>
+<div class="col col-12 border px-4 rounded " >
+
 <!-- all dealers table -->
 <table class="table table-bordered border-success table-success table-hover table-striped text-center" border="2">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col"><i class="fa-solid fa-store"></i> Shop Name</th>
-      <th scope="col"><i class="fa-solid fa-mobile-screen"></i> Mobile Number</th>
+      <th scope="col"><i class="fa-solid fa-mobile-screen"></i> Mobile </th>
       <th scope="col"><i class="fa-solid fa-file-invoice"></i> GST Number</th>
       <th scope="col"><i class="fa-solid fa-location-dot"></i> Address</th>
+      <th scope="col"><i class="fa-solid fa-sack-dollar"></i> Remaining Balance</th>
       <th scope="col"><i class="fa-solid fa-pencil"></i> Update</th>
       
     </tr>
@@ -66,6 +69,7 @@
       <td>${data.mobile}</td>
       <td>${data.gstno}</td>
       <td>${data.address}</td>
+      <td>${data.remaining_balance}</td>
       <td><a href="updateDealer.jsp?dealerID=${data.id}&dealerShopName=${data.shop_name}&dealerMobile=${data.mobile}&dealerGSTno=${data.gstno}&dealerAddress=${data.address}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i> Update</a></td>
      </tr>
  </core:forEach>
@@ -86,6 +90,9 @@
 </div>
 <core:remove var="exception" ></core:remove>
 <core:remove var="shop_id" ></core:remove>
-
+</core:if>
+<core:if test="${not sessionScope.loggedIn}">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
 </body>
 </html>

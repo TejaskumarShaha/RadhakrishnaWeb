@@ -71,8 +71,12 @@
 		select * from sales where sales_date = date_sub(current_date(),interval 1 day);
 	</sql:query>
 
-<sql:query dataSource="${con}" var="dealers">
+	<sql:query dataSource="${con}" var="dealers">
 		select * from dealers;
+	</sql:query>
+	
+	<sql:query dataSource="${con}" var="ledger">
+		select * from ledger;
 	</sql:query>
 
 <!-- message -->
@@ -84,27 +88,26 @@
 	</div>
 </div>
 </core:if>
-<div class="container ">
+<div class="container mt-2">
 <div class="row justify-content-center ">
 <div class="col col-12  px-4 py-4 rounded border bg-white" >
 <!-- wrapper container ends -->
 
-	
 <div class="row justify-content-center ">
 <core:if test="${sessionScope.is_admin}">
 <div class="col-4 mt-2 ">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-cart"></i> Product Stock </h6><hr>
         <p class="card-text">All Products in Stock <b>( ${stock.rowCount} ) </b> </p>
         <a href="allProducts.jsp" class="btn btn-sm btn-primary "><i class="bi bi-cart"></i> All Products in  Stock</a>
-      <a href="addProductInStock.jsp" class="btn btn-sm btn-warning "><i class="bi bi-cart-plus"></i> Add Product to Stock</a>
+      <a href="addProductInStock.jsp" class="btn btn-sm btn-warning "><i class="bi bi-cart-plus"></i> Add New Product</a>
       </div>
     </div>
   </div>
   
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-shop"></i> Stock Room </h6><hr>
         <p class="card-text">All Stock Room(s) <b> ( ${stockRoom.rowCount} )</b></p>
@@ -114,9 +117,8 @@
     </div>
   </div>
   
-  
   <div class="col-4 mt-2">
-    <div class="card border  bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="fa-regular fa-handshake"></i> Dealers</h6><hr>
         <p class="card-text">All Dealers <b>( ${dealers.rowCount} )</b></p>
@@ -128,18 +130,21 @@
   
   
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-journal-text"> </i>Ledger</h6><hr>
-        <p class="card-text">All Ledger <b>( )</b></p>
-        <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View all Ledger</a>
+        <p class="card-text">All Ledger <b>( ${ledger.rowCount } )</b></p>
+        <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> All Ledger</a>
+        <a href="addLedgerForm.jsp" class="btn btn-sm btn-warning"><i class="fa-solid fa-file-invoice-dollar"></i> Add Ledger</a>
+		<a href="creditAmountForDealer.jsp" class="btn btn-sm btn-secondary"><i class="fa-solid fa-file-invoice-dollar"></i> Add Credit</a>
+          
       </div>
     </div>
   </div>  
    
   <!-- admins -->
   <div class="col-4 mt-2 ">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="fa-solid fa-user-gear"></i>  Admins</h6><hr>
         <p class="card-text">All Admins <b>( ${admins.rowCount} ) </b> </p>
@@ -149,7 +154,7 @@
   </div>
   
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-cart-check"></i> billings <b>( ${billings.rowCount} )</b></h6><hr>
         <p class="card-text"> Last Day billings <b>( ${billingsYesterday.rowCount} )</b> | Today billings Today <b>( ${billingsToday.rowCount} )</b> </p>
@@ -161,7 +166,7 @@
   </div>
   
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-receipt"></i> Sales</h6><hr>
         <p class="card-text">Today Sale(s) <b>(${todaySales.rowCount} ) </b>| Yestaerday Sale(s) <b>(${yesterdaySales.rowCount} ) </b></p>
@@ -173,7 +178,7 @@
   </div>
   
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border  bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-person"></i> Operators Account</h6><hr>
         <p class="card-text">Total Operators <b> (  ${operators.rowCount} )</b></p>
@@ -183,7 +188,7 @@
     </div>
   </div> 
   <div class="col-4 mt-2">
-    <div class="card border   bg-light">
+    <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-exclamation" viewBox="0 0 16 16">
   <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h6.256Z"/>
@@ -195,11 +200,7 @@
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
+    
   </core:if>
   <!-- row ends -->
   
@@ -216,12 +217,7 @@
  <!-- ends checking logged in -->
  
  <core:if test="${not sessionScope.loggedIn}">
- <div class="row justify-content-center mt-5">
- 	<div class="col col-6 border px-2 py-2 mt-5 rounded text-center border-danger">
- 		<small>Oops! You are not Logged In</small> <br>
- 		<a href="login.jsp" class="btn btn-sm btn-primary mt-2">Login</a>
- 	</div> 	
- </div>
+ <core:redirect url="login.jsp"></core:redirect>
  </core:if>
 <!-- wrapper container ends -->
 </div>
@@ -231,17 +227,9 @@
 <core:remove var="passwordUpdateStatus"/>
 <core:remove var="passwordUpdateId"/> 
 </core:if>
+
 <core:if test="${not sessionScope.loggedIn  }">
-<div class="container mt-5">
-	<div class="row justify-content-center mt-5">
-		<div class="col col-6 text-center mt-5 border border-danger  px-3 py-3 rounded">
-			<h2 class="text-danger">Oh dear! you are not logged in </h2>
-			<small>You have to login again to view this page</small><br><br>
-			<a href="login.jsp" class="btn btn-sm btn-warning">LogIn</a>
-		</div>
-	</div>
-</div>
-	
+	<core:redirect url="login.jsp"></core:redirect>
 </core:if>
 </body>
 </html>

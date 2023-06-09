@@ -11,8 +11,6 @@
 <title>Add Billings</title>
 </head>
 <body class="bg-light">
-${exceptionInJoin }
-${sessionScope.addProdcutToTheStockRoom }
 <core:import url="navbar.jsp"></core:import>
 <core:if test="${sessionScope.loggedIn}">
 <!-- jstl data base connectivity -->
@@ -45,7 +43,7 @@ ${sessionScope.addProdcutToTheStockRoom }
 		</div>
 	</core:if>
 	<core:if test="${sessionScope.exception eq 'exception'}">
-		<div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+		<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
 			  <strong>Success! </strong> Billing added for product <b> ( ${sessionScope.product_name_in_products} )</b> successfully!.
 			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
@@ -65,11 +63,12 @@ ${sessionScope.addProdcutToTheStockRoom }
 <!-- form container -->
 <!-- form -->
 <div class="row justify-content-center">
-<div class="col col-6 border px-4 py-4 bg-white rounded">
+<div class="col col-8 border px-3 py-3 bg-white rounded">
 <form class="mb-5 " action="addBillingLogic.jsp" method="post">
 <!-- select product -->
-
-<label for="productName" class="form-label mt-3"><i class="bi bi-cart"></i> Product Name</label>
+<div class="row">
+<div class="Col col-6">
+<label for="productName" class="form-label"><i class="bi bi-cart"></i> Product Name</label>
     
   <select class="form-select" aria-label="Default select example" name="id" id="productName"  required>
   <option value="">Choose Product Name</option>
@@ -77,7 +76,9 @@ ${sessionScope.addProdcutToTheStockRoom }
   	<option value="${data.id}">${data.product_name}</option>
   </core:forEach>
 </select>
-<br>
+</div>
+
+<div class="col col-6">
 <label for="productStockRoom " class="form-label"><i class="bi bi-cart"></i> Choose Stock room</label>
 <select class="form-select" aria-label="Default select example" name="stock_room_id" id="productStockRoom" required>
   <option value="">Choose Stock Room</option>
@@ -85,51 +86,70 @@ ${sessionScope.addProdcutToTheStockRoom }
   	<option value="${data.id}">${data.stock_room_name}</option>
   </core:forEach>
 </select>
-<br>
+</div>
+</div>
+
+<!--  first row ends -->
+
+<div class="row mt-3">
+<div class="col col-6">
   <div class="mb-3">
     <label for="quantity" class="form-label"><i class="bi bi-scale"></i> Product Quantity</label>
     <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control date" id="quantity" name="product_quantity" placeholder="type product quantity in kg" required>
     </div>
-  <br>
+  </div>
+  <div class="col col-6">
   <div class="mb-3">
     <label for="date" class="form-label"><i class="bi bi-calendar-plus"></i> Product Billing Date</label>
     <input  class="form-control date" id="date" type="date" name="product_add_date" required>
   </div>
-  <br>
+ </div>
+ </div>
+ <!-- row 2 ends -->
+ 
+ <div class="row mt-2">
+ <div class="col col-6">
   <div class="mb-3">
     <label for="product_manufacturing_date" class="form-label">Manufacturing Date</label>
     <input type="date" class="form-control date" id="product_manufacturing_date" name="manufacturing_date" required>
   </div>
-  
-  <br>
+  </div>
+  <div class="col col-6">
   <div class="mb-3">
     <label for="product_expiry_date" class="form-label">Expiry Date</label>
     <input type="date" class="form-control date" id="product_expiry_date" name="expiry_date" required>
   </div>
-  
-  <br>
+  </div>
+  </div>
+  <!-- row 3 ends -->
+  <div class="row mt-2">
+  <div class="col col-6">
   <div class="mb-3">
     <label for="price" class="form-label"><i class="bi bi-cash-coin"></i> Product Net Price</label>
     <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="price" name="product_price" placeholder="type product net price here..." required>
   </div>
   
-  <br>
+ </div>
+ <div class="col col-6">
   <div class="mb-3">
     <label for="tax" class="form-label">Tax</label>
     <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="tax" name="product_tax" placeholder="type product tax here..." required>
   </div>
-  
-  <br>
+ </div>
+ </div>
+ <!-- row 4 ends -->
+ <div class="row mt-2">
+ <div class="col col-6">
   <div class="mb-3">
     <label for="discount" class="form-label">Product Discount</label>
     <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="discount" name="product_discount" placeholder="type product discount here..." required>
   </div>
-      
-  <div class="row justify-content-center mt-5">
-  <div class="col text-center">
+  </div>
+   <div class="col col-6 text-center" style="margin-top:30px">
   <button type="submit" class="btn btn-success "><i class="bi bi-check2-all"></i> Add Product</button>
   </div>
-  </div>
+ </div>
+ <!-- row 5 ends -->
 </form >
 </div>
 </div>
@@ -149,9 +169,13 @@ ${sessionScope.addProdcutToTheStockRoom }
 		</div>
 		
 	</div>
-</core:if>
 	<core:remove var="product_name_in_products"></core:remove>
 	<core:remove var="exception"></core:remove>
 	<core:remove var="notexception"></core:remove>
+</core:if>
+<core:if test="${not sessionScope.loggedIn}">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
+	
 </body>
 </html>

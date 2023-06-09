@@ -78,6 +78,18 @@
 		<sql:param value="${q}"></sql:param>
 	</sql:update>
 	</core:if>
+	
+	<!-- insertinto billings -->
+	<sql:update dataSource="${con}" var="addedInExistingProduct">
+		insert into billings(product_id,product_quantity,product_add_date,product_price,manufacturing_date,expiry_date,store_name) values(?,?,?,?,?,?,?);
+		<sql:param value="${param.id}"></sql:param>
+		<sql:param value="${q}"></sql:param>
+		<sql:param value="${param.product_add_date}"></sql:param>
+		<sql:param value="${price}"></sql:param>
+		<sql:param value="${param.manufacturing_date}"></sql:param>
+		<sql:param value="${param.expiry_date}"></sql:param>
+		<sql:param value="${param.stock_room_id}"></sql:param>
+	</sql:update>
 	<!-- extracting product name from products -->
 	
 	<sql:query dataSource="${con}" var="product_name_in_products_from_query">

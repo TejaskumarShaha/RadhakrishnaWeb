@@ -10,9 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Add Product In stock</title>
 </head>
-
 <body class="bg-light">
-<core:if test="${sessionScope.loggedIn}">
+
 <sql:setDataSource 
 	user="root" 
 	password="root" 
@@ -20,24 +19,24 @@
 	url="jdbc:mysql://localhost:3306/radhakrishna" 
 	var="con"/>
 <core:import url="navbar.jsp"></core:import>
-
+<core:if test="${sessionScope.loggedIn}">
 	<div class="container mt-5">
 	<!-- success message -->
-	<core:if test="${requestScope.insertProductStatus eq 'success'}">
+	<core:if test="${sessionScope.productNameUpdated == 'updated'}">
 	<!-- message -->
 	<div class="row justify-content-center ">
 			<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-			  <strong>Success! </strong> Product ${requestScope.product_name} is added successfully.
+			  <strong>Success! </strong> Product ${sessionScope.product_name_in_stock} is added successfully.
 			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		</div>
 	</core:if>
 	<!-- failed message -->
-	<core:if test="${requestScope.insertProductStatus eq 'failed'}">
+	<core:if test="${sessionScope.product_available_in_Stock == 'exception'}">
 	<!-- message -->
 	<div class="row justify-content-center ">
 			<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-			  <strong>Oh dear! </strong> Product ${requestScope.product_name} is already available in stock.
+			  <strong>Oops! </strong> Product ${sessionScope.product_name_in_stock} is already available in stock.
 			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		</div>
@@ -46,7 +45,7 @@
 		<!-- heading -->
 		<div class="row justify-content-center">
 			<div class="col col-5 mt-5">
-			<h3>Add New Product </h3>
+			<h3>Update Product </h3>
 			</div>
 		</div>
 		<!-- form container -->
@@ -55,20 +54,25 @@
 			<div class="col col-5 border border-success px-5  bg-white rounded">
 				
 				<!--  form -->
-				<form class="mb-5" action="AddProduct" method="post">
+				<form class="mb-5" action="updateProductName" method="post">
 				  <div class="mb-3">
-				    <label for="product_name" class="form-label mt-3"><i class="bi bi-cart"></i> Product Name</label>
-				    <input type="text" class="form-control" id="product_name" name="productNameAddProduct" required placeholder="type Product name here">
+				    <label for="product_name_in_stock" class="form-label mt-3"><i class="bi bi-cart"></i> Product ID</label>
+				    <input type="text" class="form-control" id="product_name_in_stock" name="productIDForUpdateProductName" readonly value="${param.product_id }">
+				    </div>
+				    
+				    <div class="mb-3">
+				    <label for="product_name_in_stock" class="form-label mt-3"><i class="bi bi-cart"></i> Product Name</label>
+				    <input type="text" class="form-control" id="product_name_in_stock" name="ProductNameForUpdateProductName" required value="${param.product_name }">
 				    </div>				  
 				  
 				  <div class="mb-3">
 				    <label for="product_quantity_in_stock" class="form-label"><i class="fa-solid fa-scale-balanced"></i> Product Quantity (kg/L)</label>
-				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="product_quantity_in_stock" maxlength="65" name="productQuantityInAddProduct" placeholder="type Product Quantity here" required>
+				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="product_quantity_in_stock" value="${param.product_quantity}" maxlength="65" name="productQuantityInStock" readonly >
 				  </div>
 				  
 				  <div class="row justify-content-center mt-3">
 					  <div class="col col-4 mt-3">
-					  	<button type="submit" class="btn btn-success btn-sm"><i class="bi bi-cart-plus"></i> Add Product</button>
+					  	<button type="submit" class="btn btn-success btn-sm"><i class="bi bi-cart-plus"></i> Update Product</button>
 					  </div>
 				  </div>
 			</form >
@@ -81,13 +85,10 @@
 		
 	</div>
 	
-
-
 </core:if>
 <!-- if user not logged in redirect to the login page -->
 <core:if test="${not sessionScope.loggedIn }">
 	<core:redirect url="login.jsp"></core:redirect>
 </core:if>
-
 </body>
 </html>

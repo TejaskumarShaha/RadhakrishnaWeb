@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<core:if test="${sessionScope.loggedIn}">
 <core:import url="navbar.jsp"></core:import>
 <!-- check for login -->
 <core:if test="${sessionScope.is_admin}">
@@ -66,6 +67,11 @@
 	
 <core:import url="footer.jsp"></core:import>
 </div>
+</core:if>
+</core:if>
+<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
 </core:if>
 </body>
 </html>

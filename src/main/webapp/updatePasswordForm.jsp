@@ -15,8 +15,9 @@
 }
 </style>
 <body>
-<core:import url="navbar.jsp"></core:import>
 <core:if test="${sessionScope.loggedIn}">
+<core:import url="navbar.jsp"></core:import>
+
 <sql:setDataSource 
 	user="root" 
 	password="root" 
@@ -95,5 +96,9 @@
 		
 	</script>
 	</core:if>
+	<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
 	</body>
 </html>

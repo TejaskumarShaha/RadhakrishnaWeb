@@ -15,8 +15,13 @@
 <!-- custom css -->
 <link rel="stylesheet" href="./css/stylesheet.css">
 </head>
+<style>
+	.bg-color{
+	background:#E6E6FA!important;
+}
+</style>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light border-success " style="border-bottom:2px solid ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-color border-success " style="border-bottom:2px solid ">
   <div class="container-fluid">
     <a class="navbar-brand text-success" href="#" ><strong>RADHA KRISHNA </strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +54,7 @@
         
          
         <li class="nav-item">
-          <a class="nav-link" href="allBillings.jsp"><i class="bi bi-shop"></i> Add Stock Room</a>
+          <a class="nav-link" href="addStockRoom.jsp"><i class="bi bi-shop"></i> Add Stock Room</a>
         </li>
         
         <li class="nav-item ">

@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<core:if test="${sessionScope.loggedIn }">
 <core:import url="navbar.jsp"></core:import>
 	<div class="container mt-5">
 		<div class="row ">
@@ -70,5 +71,10 @@
 	</div>
 	<core:remove var="stock_room_name"></core:remove>
 	<core:remove var="exception"></core:remove>
+	</core:if>
+	<!-- if user not logged in redirect to the login page -->
+<core:if test="${not sessionScope.loggedIn }">
+	<core:redirect url="login.jsp"></core:redirect>
+</core:if>
 </body>
 </html>

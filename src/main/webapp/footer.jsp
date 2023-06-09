@@ -10,13 +10,11 @@
 <style>
 	.custom-css{
 		
-		height:50px;
-		border-top:1.5px solid;
 		font-family:sans-serif;
 	}
 </style>
 <body>
- 	<div class="col text-center custom-css mt-5 mb-5 px-3 py-3 border-secondary">
+ 	<div class="col text-center custom-css mb-5 px-3 py-3 border-secondary">
 		 	Designed and Developed By Er. Shivam Shankhdhar<br>
 		 	<i class="fa-solid fa-copyright"></i> Copyright 2023	 	
 	</div>
