@@ -38,7 +38,7 @@ public class addLedgerLogic extends HttpServlet {
 	   				 shop_name = shop_name+re_balance.getString(2);
 	   			}
 	   			double remaining_balance_of_dealer = initial_remaining_price + price_after_credit;
-	   			PreparedStatement ps = db.getStatement("insert into ledger(shop_id,product_id,product_quantity,date,product_net_price,product_gross_price,credit_rupee,price_after_credit,initial_remaining_price,remaining_balance) values(?,?,?,?,?,?,?,?,?,?);");
+	   			PreparedStatement ps = db.getStatement("insert into ledger(shop_id,product_id,product_quantity,ledger_date,product_net_price,product_gross_price,credit_rupee,price_after_credit,initial_remaining_price,remaining_balance) values(?,?,?,?,?,?,?,?,?,?);");
 	   			ps.setInt(1, shopId);
 	   			ps.setInt(2, product_id);
 	   			ps.setDouble(3, quantity);

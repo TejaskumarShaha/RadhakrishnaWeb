@@ -79,10 +79,13 @@
 <div class="row">
 <!-- for buttons -->
 	<div class="col col-2">
-	<a class="btn btn-sm btn-warning" href="addDealers.jsp"><i class="fa-solid fa-store"></i> Add Dealer Shop</a>
+	<a class="btn btn-sm btn-info" href="addDealers.jsp"><i class="fa-solid fa-store"></i> Add Dealer Shop</a>
 	</div>
-	<div class="col col-10">
+	<div class="col col-8">
 		<h4>Add New Ledger</h4>
+	</div>
+	<div class="col col-2">
+	<a class="btn btn-sm btn-primary" href="allLedgers.jsp"><i class="fa-solid fa-book"></i> All Ledgers</a>
 	</div>
 </div>
 <div class="row  justify-content-center">

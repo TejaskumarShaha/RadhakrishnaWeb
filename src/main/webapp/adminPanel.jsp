@@ -132,11 +132,11 @@
   <div class="col-4 mt-2">
     <div class="card border bg-color">
       <div class="card-body">
-        <h6 class="card-title"><i class="bi bi-journal-text"> </i>Ledger</h6><hr>
-        <p class="card-text">All Ledger <b>( ${ledger.rowCount } )</b></p>
-        <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> All Ledger</a>
+        <h6 class="card-title"><i class="bi bi-journal-text"> </i>Ledger ( ${ledger.rowCount } )</h6><hr>
+        <a href="allLedgers.jsp" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> All Ledger</a>
         <a href="addLedgerForm.jsp" class="btn btn-sm btn-warning"><i class="fa-solid fa-file-invoice-dollar"></i> Add Ledger</a>
 		<a href="creditAmountForDealer.jsp" class="btn btn-sm btn-secondary"><i class="fa-solid fa-file-invoice-dollar"></i> Add Credit</a>
+        <a href="#" class="btn btn-sm btn-success mt-2" style="margin-bottom:2px"><i class="bi bi-eye"></i> All Credits</a>
           
       </div>
     </div>

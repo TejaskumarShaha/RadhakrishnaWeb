@@ -93,7 +93,7 @@
 				 
 				<div class="row">
 				<div class="col text-center">
-				  <button type="submit" class="btn btn-sm btn-primary  mt-3"><i class="bi bi-person-check-fill"></i> Add Credit</button>
+				  <button type="submit" class="btn btn-sm btn-primary  mt-3"><i class="fa-solid fa-wallet" ></i> Add Credit</button>
 				  </div>
 				  </div>
 			</form>
