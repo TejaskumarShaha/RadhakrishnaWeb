@@ -79,7 +79,7 @@
 					      <th scope="col">Credit Rupee</th>
 					      
 					      <th scope="col">Initial Remaining Balance</th>
-					      <th scope="col">Remaining Balance Now</th>
+					      <th scope="col">Remaining Balance</th>
 					      
 					     <!-- <th scope="col">Update</th>
 					     <th scope="col">Delete</th> -->

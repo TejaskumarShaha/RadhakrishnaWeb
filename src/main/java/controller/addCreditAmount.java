@@ -25,9 +25,10 @@ public class addCreditAmount extends HttpServlet {
 		String credit_date 	 = request.getParameter("creditAddDate");
 		String shop_name_for_Success = "";
 		DBConnection db = new DBConnection();
+		double remaining_balance = 0;
 		
 		try {
-			double remaining_balance = 0;
+			
 //			extracting remaining balance of dealer
 			PreparedStatement ps = db.getStatement("select remaining_balance,shop_name from dealers where id =?");
 			ps.setInt(1, shop_id);
