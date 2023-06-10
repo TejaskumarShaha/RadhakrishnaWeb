@@ -52,6 +52,11 @@
 				    </div>				  
 				  
 				  <div class="mb-3">
+				    <label for="dealer_remaining_balance" class="form-label"><i class="fa-solid fa-indian-rupee-sign"></i> Remaining Balance</label>
+				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" class="form-control " id="dealer_remaining_balance" name="dealerRemainingBalance" placeholder="0.00" required>
+				  </div>
+				  
+				  <div class="mb-3">
 				    <label for="dealer_mobile" class="form-label"><i class="bi bi-phone"></i> Mobile</label>
 				    <input type="text" oninput="this.value= this.value.replace(/[^\d.]/g, '')" maxlength="10" min="10" class="form-control " id="dealer_mobile" name="dealerMobile" placeholder="type dealer mobile here..." required>
 				  </div>

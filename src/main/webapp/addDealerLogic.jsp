@@ -17,11 +17,12 @@
 	var="con"/>
 		<core:catch var="exception">
 		<sql:update dataSource="${con}" var="addDealerStatus">
-			insert into dealers(shop_name,mobile,gstno,address) values(?,?,?,?);
+			insert into dealers(shop_name,mobile,gstno,address,remaining_balance) values(?,?,?,?,?);
 			<sql:param value="${param.dealerShop}"></sql:param>
 			<sql:param value="${param.dealerMobile}"></sql:param>
 			<sql:param value="${param.gstnumber}"></sql:param>
 			<sql:param value="${param.dealerAddress}"></sql:param>
+			<sql:param value="${param.dealerRemainingBalance}"></sql:param>
 		</sql:update>
 	</core:catch>
 	<core:if test="${exception eq null}">
