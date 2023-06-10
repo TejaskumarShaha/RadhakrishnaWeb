@@ -31,7 +31,6 @@ public class deleteProduct extends HttpServlet {
 			PreparedStatement ps = db.getStatement("delete from products where id =?");
 			ps.setInt(1, product_id);
 			int r = ps.executeUpdate();
-			System.out.println(r);
 			if(r>0) {
 				HttpSession s = request.getSession();
 				s.setAttribute("productDeleteStatus", true);

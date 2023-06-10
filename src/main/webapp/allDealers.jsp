@@ -48,7 +48,7 @@
 <div class="col col-12 border px-4 rounded " >
 
 <!-- all dealers table -->
-<table class="table table-bordered border-success table-success table-hover table-striped text-center" border="2">
+<table class="table  table-bordered  table-striped text-center">
   <thead>
     <tr>
       <th scope="col">#</th>

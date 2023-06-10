@@ -20,7 +20,6 @@ function limitText(limitField, limitNum) {
 <core:if test="${sessionScope.loggedIn}">
 <core:import url="navbar.jsp"></core:import>
 <div class="container mt-5">
-${ notexception}
 <core:if test="${param.notException=='notexception'}">
 <!-- message -->
 <div class="row">

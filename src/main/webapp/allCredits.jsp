@@ -65,7 +65,7 @@
 					<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
 					   All Credits <strong>( ${allCreditRemainingBalance.rowCount} )</strong>
 					  </div>
-					<table class="table table-bordered border-success table-success table-hover table-striped text-center" border="1">
+					<table class="table  table-bordered  table-striped text-center">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>

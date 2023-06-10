@@ -135,8 +135,8 @@
         <h6 class="card-title"><i class="bi bi-journal-text"> </i>Ledger ( ${ledger.rowCount } )</h6><hr>
         <a href="allLedgers.jsp" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> All Ledger</a>
         <a href="addLedgerForm.jsp" class="btn btn-sm btn-warning"><i class="fa-solid fa-file-invoice-dollar"></i> Add Ledger</a>
-		<a href="creditAmountForDealer.jsp" class="btn btn-sm btn-secondary"><i class="fa-solid fa-file-invoice-dollar"></i> Add Credit</a>
-        <a href="#" class="btn btn-sm btn-success mt-2" style="margin-bottom:2px"><i class="bi bi-eye"></i> All Credits</a>
+		<a href="creditAmountForDealer.jsp" class="btn btn-sm text-white" style="background-color:#DC7633  ;"><i class="fa-solid fa-file-invoice-dollar"></i> Add Credit</a>
+        <a href="allCredits.jsp" class="btn btn-sm text-white mt-2" style="margin-bottom:2px;background-color:#8E44AD;"><i class="bi bi-eye"></i> All Credits</a>
           
       </div>
     </div>
@@ -169,7 +169,7 @@
     <div class="card border bg-color">
       <div class="card-body">
         <h6 class="card-title"><i class="bi bi-receipt"></i> Sales</h6><hr>
-        <p class="card-text">Today Sale(s) <b>(${todaySales.rowCount} ) </b>| Yestaerday Sale(s) <b>(${yesterdaySales.rowCount} ) </b></p>
+        <p class="card-text">Today Sale(s) <b>( ${todaySales.rowCount} ) </b>| Yestaerday Sale(s) <b>( ${yesterdaySales.rowCount} ) </b></p>
         <a href="allSales.jsp" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View Total Sales</a>
         <a href="addSales.jsp" class="btn btn-sm btn-warning"><i class="bi bi-cart-dash"></i> Add Sale</a>
         
@@ -194,7 +194,7 @@
   <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h6.256Z"/>
   <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5Zm0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/>
 </svg> Borrowers </h6><hr>
-        <p class="card-text">Total Borrowers <b>(${borrowers.rowCount} )</b></p>
+        <p class="card-text">Total Borrowers <b>( ${borrowers.rowCount} )</b></p>
         <a href="allBorrowers.jsp" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View all Borrowers</a>
         <a href="addBorrower.jsp" class="btn btn-sm btn-warning"><i class="bi bi-person-add"></i><i class="bi bi-person-plus"></i> Add new Borrowers</a>
       </div>

@@ -31,22 +31,36 @@ border-left:5px solid #008080;
 		
 		
 <div class="container mt-3 col-10">
+
 <div class="row">
 	<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
 			  There are <b> ( ${stock.rowCount} )</b> Stock Rooms
 			  </div>
 </div>
+<core:if test="${requestScope.deleteRoomStatus}">
+<!-- message -->
+<div class="row">
+	<div class="col">
+		<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+		  Deleted! Sock Room Deleted.
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+</core:if>
 <div class="row justify-content-center ">
 	<div class="col col-6 border  px-4 py-4 rounded justify-content-center" >
 			
 			<!-- collapse -->	
 <core:if test="${stock.rowCount gt 0}">	
 <core:forEach var="data" items="${stock.rows}" varStatus="i">
-<div class="card border mt-2 "  style="background-color:#DCF8E7;cursor:pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample-${i.count}" aria-expanded="false" aria-controls="collapseExample" >
-	<div class="card-header border-left text-center ">
-		     ${i.count} - <b><i class="bi bi-chevron-double-left"></i> ${data.stock_room_name} <i class="bi bi-chevron-double-right"></i></b>
+<div class="card border mt-2 "  style="background-color:#DCF8E7;cursor:pointer;" aria-expanded="false" aria-controls="collapseExample" >
+	<div class="card-header border-left">
+		    <button class="btn btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample-${i.count}">Expand </button>
+		     <span class="text-center" style="margin-left:180px"><b> ${data.stock_room_name} </b></span>
+		    <a href="deleteRoom?id=${data.id}" class="btn btn-sm btn-danger" style="position:absolute;right:10px">Delete</a>
  	</div>
-    <div class="collapse  "  id="collapseExample-${i.count}">
+    <div class="collapse"  id="collapseExample-${i.count}">
   <div class="card card-body ">
 	<sql:query dataSource="${con}" var="stockData">
 		SELECT product_name,product_quantity_in_stock_room FROM stock S
@@ -88,8 +102,10 @@ border-left:5px solid #008080;
 		
 </core:if>
 <core:if test="${stock.rowCount eq 0}">
-	<h3 class="text-center text-danger">Oops there is no stock room please add new Stock room</h3><br>
-	<a href="addStockRoom.jsp" class="btn btn-sm btn-warning">Add Stock Room</a>
+<div class="col  text-center">
+	<h3 class=" text-danger">Oops there is no stock room please add new Stock room</h3><br>
+	<a href="addStockRoom.jsp" class="btn btn-sm btn-primary">Add Stock Room</a>
+	</div>
 </core:if>		
 			
 		</div>

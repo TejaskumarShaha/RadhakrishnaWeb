@@ -29,7 +29,7 @@
 <div class="row justify-content-md-center ">
 <div class="col col-12">
 <core:if test="${rs.rowCount gt 0}">
-<table class="table table-bordered border-success table-success table-hover table-striped text-center" border="1">
+<table class="table  table-bordered  table-striped text-center">
   <thead>
     <tr>
       <th scope="col">#</th>

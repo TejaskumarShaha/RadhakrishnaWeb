@@ -55,7 +55,7 @@
 					   Products in Stock <strong>( ${products.rowCount} )</strong>
 					</div>
 				
-					<table class="table  table-bordered border-success table-success table-hover table-striped text-center" border="1">
+					<table class="table  table-bordered  table-striped text-center">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
@@ -80,7 +80,10 @@
 					</table>
 					</core:if>
 					<core:if test="${products.rowCount eq 0}">
+					<div class="row mt-5">
+					<div class="col mt-5">
 						<h3 class="text-danger text-center">Oh dear! no products available.</h3>
+						</div></div>
 					</core:if>
 		</div>
 </div>
